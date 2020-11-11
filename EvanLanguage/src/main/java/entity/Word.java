@@ -10,5 +10,5 @@ package entity;
  */
 public class Word {
 	private String romanization, language, meaning, wtype, main, ancillary, sname;
-    private int wid = -1;
+	private int wid = -1;
 }
