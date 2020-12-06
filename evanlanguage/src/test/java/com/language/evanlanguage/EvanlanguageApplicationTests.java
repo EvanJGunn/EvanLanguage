@@ -1,10 +1,10 @@
-package evangunn.EvanLanguage;
+package com.language.evanlanguage;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class EvanLanguageApplicationTests {
+class EvanlanguageApplicationTests {
 
 	@Test
 	void contextLoads() {
