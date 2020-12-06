@@ -33,8 +33,8 @@ public class Symbols {
     @Column(name = "ancillary")
     private String ancillary;
 
-    @OneToOne(mappedBy = "symbols")
-    private Word word;
+    //@OneToOne(mappedBy = "symbols")
+    //private Word word;
 
     public Symbols(String main, String ancillary) {
         this.main = main;
@@ -66,13 +66,5 @@ public class Symbols {
 
     public void setAncillary(String ancillary) {
         this.ancillary = ancillary;
-    }
-
-    public Word getWord() {
-        return word;
-    }
-
-    public void setWord(Word word) {
-        this.word = word;
     }
 }

@@ -1,24 +1,18 @@
 package com.language.service;
 
-import javax.transaction.Transactional;
+import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import javax.transaction.Transactional;
 
 import com.language.entity.Symbols;
 import com.language.entity.Word;
 import com.language.entity.WordSource;
-import com.language.repository.WordRepository;
 
-/**
- * Contains the services provided to the controllers for usage.
- * 
- * @author Evan Gunn
- */
-@Service
-public class WordService {
-    @Autowired
-    WordRepository wordRepo;
+public interface WordService {
+    /**
+     * @return A list of all words in the database
+     */
+    public List<Word> getAllWords();
 
     /**
      * Save an aggregation of word, symbols, and source to the database. Works as a
@@ -30,30 +24,22 @@ public class WordService {
      * @param wordSource The source to be inserted.
      */
     @Transactional
-    public void saveAggregatedWord(Word word, Symbols symbols, WordSource wordSource) {
-        if (word == null)
-            return;
+    public void saveAggregatedWord(Word word, Symbols symbols, WordSource wordSource);
 
-        if (symbols != null)
-            symbols.setWord(word);
-        if (wordSource != null)
-            wordSource.setWord(word);
+    /**
+     * Delete a word, as well as its
+     * symbols and source if they exist.
+     */
+    @Transactional
+    public void deleteAggregatedWord(long id);
 
-        word.setSymbols(symbols);
-        word.setWordSource(wordSource);
+    /**
+     * @return A list of all words in a language
+     */
+    public List<Word> getWordsByLanguage(String language);
 
-        // Insert the word, source and symbols into the repository
-        wordRepo.save(word);
-    }
-
-    // For testing purposes
-    public void printAll() {
-        for (Word w : wordRepo.findAll()) {
-            System.out.println(w.getRomanization());
-            if (w.getSymbols() != null)
-                System.out.println(w.getSymbols().getMain());
-            if (w.getWordSource() != null)
-                System.out.println(w.getWordSource().getSource());
-        }
-    }
+    /**
+     * A method for server side debugging
+     */
+    public void printAll();
 }

@@ -35,7 +35,6 @@ public class EvanlanguageApplication {
              * myService.saveAggregatedWord(new Word("English", "meaning", "meaning",
              * "noun"), null, null);
              */
-
             myService.printAll();
         };
     }

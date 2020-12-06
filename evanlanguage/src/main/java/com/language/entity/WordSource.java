@@ -26,8 +26,8 @@ public class WordSource {
     @Column(name = "sname")
     private String source;
 
-    @OneToOne(mappedBy = "wordSource")
-    private Word word;
+    //@OneToOne(mappedBy = "wordSource")
+    //private Word word;
 
     public WordSource(String source) {
         this.source = source;
@@ -50,13 +50,5 @@ public class WordSource {
 
     public void setSource(String source) {
         this.source = source;
-    }
-
-    public Word getWord() {
-        return word;
-    }
-
-    public void setWord(Word word) {
-        this.word = word;
     }
 }
