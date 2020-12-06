@@ -4,9 +4,7 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
-import com.language.entity.Symbols;
 import com.language.entity.Word;
-import com.language.entity.WordSource;
 
 public interface WordService {
     /**
@@ -19,16 +17,13 @@ public interface WordService {
      * transaction, so failure at any point will result in a roll back. Will set the
      * word parameter of the symbols and source to the word provided.
      * 
-     * @param word       The word to be inserted.
-     * @param symbols    The symbols to be inserted.
-     * @param wordSource The source to be inserted.
+     * @param word The word to be inserted.
      */
     @Transactional
-    public void saveAggregatedWord(Word word, Symbols symbols, WordSource wordSource);
+    public Word saveAggregatedWord(Word word);
 
     /**
-     * Delete a word, as well as its
-     * symbols and source if they exist.
+     * Delete a word, as well as its symbols and source if they exist.
      */
     @Transactional
     public void deleteAggregatedWord(long id);

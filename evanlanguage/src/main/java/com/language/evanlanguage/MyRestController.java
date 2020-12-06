@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,17 +24,22 @@ import com.language.service.WordService;
 public class MyRestController {
     @Autowired
     private WordService wService;
-    
+
     @RequestMapping("/")
     public String welcome() {
         return "Welcome to Evan Language";
     }
-    
+
+    @PostMapping(path = "/save", consumes = "application/json", produces = "application/json")
+    public ResponseEntity<Word> saveWord(@RequestBody Word word) {
+        return new ResponseEntity<>(wService.saveAggregatedWord(word), HttpStatus.CREATED);
+    }
+
     @GetMapping(path = "/words", produces = "application/json")
     public ResponseEntity<List<Word>> getAllWords() {
         return new ResponseEntity<>(wService.getAllWords(), HttpStatus.OK);
     }
-    
+
     @GetMapping(path = "/words/{language}", produces = "application/json")
     public ResponseEntity<List<Word>> getWordsByLanguage(@PathVariable(value = "language") String language) {
         return new ResponseEntity<>(wService.getWordsByLanguage(language), HttpStatus.OK);
