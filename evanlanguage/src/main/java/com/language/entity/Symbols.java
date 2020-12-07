@@ -20,7 +20,7 @@ public class Symbols {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "wid")
-    private int id;
+    private long id;
 
     @Column(name = "main")
     private String main;
@@ -43,11 +43,11 @@ public class Symbols {
     public Symbols() {
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

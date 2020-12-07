@@ -16,6 +16,8 @@ import com.language.repository.WordRepository;
 @Component
 public class TestBuilder {
     private static final int TEST_SIZE = 10;
+    private static final String MEANING_QUESTION = "What is the meaning of: ";
+    private static final String SYMBOLS_QUESTION = "What is the reading of: ";
     
     @Autowired
     WordRepository wordRepo;
@@ -32,20 +34,20 @@ public class TestBuilder {
      * @param language   The language to be used in queries, can be null.
      * @return New test built according to parameters.
      */
-    public Test buildTest(TestType testType, String source, String wordType, String language) {
+    public Test buildTest(TestParameters parameters) {
         // Get a list of words out of the repository based on parameters
-        List<Word> myWords = wordRepo.selectBySpecification(source, wordType, language, TEST_SIZE);
+        List<Word> myWords = wordRepo.selectBySpecification(parameters.getSource(), parameters.getWordType(), parameters.getLanguage(), TEST_SIZE);
         
         Test myTest = new Test();
-        switch (testType) {
+        switch (parameters.getTestType()) {
             case MEANING:
                 for (Word w: myWords) {
-                    myTest.addQuestion(new Question("What is the meaning of: " + w.getRomanization(), w.getMeaning()));
+                    myTest.addQuestion(new Question(MEANING_QUESTION + w.getRomanization(), w.getMeaning()));
                 }
                 break;
             case MAIN_SYMBOLS:
                 for (Word w: myWords) {
-                    myTest.addQuestion(new Question("What is the reading of: " + w.getSymbols().getMain(), w.getSymbols().getAncillary()));
+                    myTest.addQuestion(new Question(SYMBOLS_QUESTION + w.getSymbols().getMain(), w.getSymbols().getAncillary()));
                 }
                 break;
         }

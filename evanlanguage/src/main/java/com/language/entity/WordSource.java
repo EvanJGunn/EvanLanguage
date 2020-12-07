@@ -20,7 +20,7 @@ public class WordSource {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "wid")
-    private int id;
+    private long id;
 
     @Column(name = "sname")
     private String source;
@@ -35,11 +35,11 @@ public class WordSource {
     public WordSource() {
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

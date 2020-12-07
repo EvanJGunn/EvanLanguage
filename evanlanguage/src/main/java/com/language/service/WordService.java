@@ -26,12 +26,15 @@ public interface WordService {
      */
     @Transactional
     public Word saveAggregatedWord(Word word);
-
+    
     /**
-     * Delete a word, as well as its symbols and source if they exist.
+     * Delete an aggregation of word, symbols, and source from the database.
+     * 
+     * @param id The id of the word to be deleted.
+     * @return The id of the deleted word on success, -1 on failure.
      */
     @Transactional
-    public void deleteAggregatedWord(long id);
+    public long deleteAggregatedWord(long id);
 
     /**
      * @return A list of all words in a language

@@ -22,7 +22,7 @@ public class Word {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "wid")
-    private int id;
+    private long id;
 
     @Column(name = "wlanguage")
     private String language;
@@ -89,8 +89,12 @@ public class Word {
         this.type = type;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
+    }
+    
+    public void setId(long id) {
+        this.id = id;
     }
 
     public Symbols getSymbols() {

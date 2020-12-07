@@ -26,6 +26,13 @@ public class MyWordService implements WordService {
     public Word saveAggregatedWord(Word word) {
         return wordRepo.save(word);
     }
+    
+    @Override
+    @Transactional
+    public long deleteAggregatedWord(long id) {
+        wordRepo.deleteById(id);
+        return wordRepo.existsById(id) ? id : -1;
+    }
 
     @Override
     public List<Word> getAllWords() {
@@ -35,11 +42,6 @@ public class MyWordService implements WordService {
             myWords.add(w);
         }
         return myWords;
-    }
-
-    @Override
-    public void deleteAggregatedWord(long id) {
-        wordRepo.deleteById(id);
     }
 
     @Override

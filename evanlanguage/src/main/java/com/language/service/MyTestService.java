@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.language.testmodel.Test;
 import com.language.testmodel.TestBuilder;
-import com.language.testmodel.TestType;
+import com.language.testmodel.TestParameters;
 
 /**
  * An implementation of the TestService interface.
@@ -18,7 +18,7 @@ public class MyTestService implements TestService {
     private TestBuilder testBuilder;
 
     @Override
-    public Test createTest(TestType testType, String source, String wordType, String language) {
-        return testBuilder.buildTest(testType, source, wordType, language);
+    public Test createTest(TestParameters parameters) {
+        return testBuilder.buildTest(parameters);
     }
 }
