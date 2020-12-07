@@ -9,5 +9,5 @@ import com.language.testmodel.TestType;
  * @author Evan Gunn
  */
 public interface TestService {
-    public Test createTest(TestType testType, String wordSource, String wordType, String language);
+    public Test createTest(TestType testType, String source, String wordType, String language);
 }

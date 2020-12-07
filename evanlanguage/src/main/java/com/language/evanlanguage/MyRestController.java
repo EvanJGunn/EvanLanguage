@@ -53,6 +53,7 @@ public class MyRestController {
 
     @GetMapping(path = "/test", produces = "application/json")
     public ResponseEntity<List<Question>> getTest() {
-        return new ResponseEntity<>(testService.createTest(TestType.MEANING, "", "", "").getQuestions(), HttpStatus.OK);
+        return new ResponseEntity<>(
+                testService.createTest(TestType.MAIN_SYMBOLS, null, null, "japanese").getQuestions(), HttpStatus.OK);
     }
 }

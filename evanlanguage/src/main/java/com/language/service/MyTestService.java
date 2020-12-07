@@ -18,7 +18,7 @@ public class MyTestService implements TestService {
     private TestBuilder testBuilder;
 
     @Override
-    public Test createTest(TestType testType, String wordSource, String wordType, String language) {
-        return testBuilder.buildTest(testType, wordSource, wordType, language);
+    public Test createTest(TestType testType, String source, String wordType, String language) {
+        return testBuilder.buildTest(testType, source, wordType, language);
     }
 }
