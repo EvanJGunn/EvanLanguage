@@ -13,7 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.language.entity.Word;
+import com.language.service.TestService;
 import com.language.service.WordService;
+import com.language.testmodel.Question;
+import com.language.testmodel.TestType;
 
 /**
  * The Rest controller controls the mappings for requests
@@ -23,7 +26,10 @@ import com.language.service.WordService;
 @RestController
 public class MyRestController {
     @Autowired
-    private WordService wService;
+    private WordService wordService;
+
+    @Autowired
+    private TestService testService;
 
     @RequestMapping("/")
     public String welcome() {
@@ -32,16 +38,21 @@ public class MyRestController {
 
     @PostMapping(path = "/save", consumes = "application/json", produces = "application/json")
     public ResponseEntity<Word> saveWord(@RequestBody Word word) {
-        return new ResponseEntity<>(wService.saveAggregatedWord(word), HttpStatus.CREATED);
+        return new ResponseEntity<>(wordService.saveAggregatedWord(word), HttpStatus.CREATED);
     }
 
     @GetMapping(path = "/words", produces = "application/json")
     public ResponseEntity<List<Word>> getAllWords() {
-        return new ResponseEntity<>(wService.getAllWords(), HttpStatus.OK);
+        return new ResponseEntity<>(wordService.getAllWords(), HttpStatus.OK);
     }
 
     @GetMapping(path = "/words/{language}", produces = "application/json")
     public ResponseEntity<List<Word>> getWordsByLanguage(@PathVariable(value = "language") String language) {
-        return new ResponseEntity<>(wService.getWordsByLanguage(language), HttpStatus.OK);
+        return new ResponseEntity<>(wordService.getWordsByLanguage(language), HttpStatus.OK);
+    }
+
+    @GetMapping(path = "/test", produces = "application/json")
+    public ResponseEntity<List<Question>> getTest() {
+        return new ResponseEntity<>(testService.createTest(TestType.MEANING, "", "", "").getQuestions(), HttpStatus.OK);
     }
 }

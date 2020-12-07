@@ -6,6 +6,11 @@ import javax.transaction.Transactional;
 
 import com.language.entity.Word;
 
+/**
+ * The interface for a service accessing a Word Repository.
+ * 
+ * @author Evan Gunn
+ */
 public interface WordService {
     /**
      * @return A list of all words in the database

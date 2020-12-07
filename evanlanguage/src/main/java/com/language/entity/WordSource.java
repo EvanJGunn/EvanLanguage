@@ -5,7 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -26,8 +25,8 @@ public class WordSource {
     @Column(name = "sname")
     private String source;
 
-    //@OneToOne(mappedBy = "wordSource")
-    //private Word word;
+    // @OneToOne(mappedBy = "wordSource")
+    // private Word word;
 
     public WordSource(String source) {
         this.source = source;

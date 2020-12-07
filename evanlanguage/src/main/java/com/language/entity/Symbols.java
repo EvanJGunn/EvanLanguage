@@ -5,7 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -33,8 +32,8 @@ public class Symbols {
     @Column(name = "ancillary")
     private String ancillary;
 
-    //@OneToOne(mappedBy = "symbols")
-    //private Word word;
+    // @OneToOne(mappedBy = "symbols")
+    // private Word word;
 
     public Symbols(String main, String ancillary) {
         this.main = main;

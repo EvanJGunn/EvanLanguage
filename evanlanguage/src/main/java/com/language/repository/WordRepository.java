@@ -16,12 +16,12 @@ import com.language.entity.Word;
  */
 @Repository
 public interface WordRepository extends CrudRepository<Word, Long> {
-    
+
     /**
-     * Look into pagination:
-     * https://www.baeldung.com/spring-data-jpa-query
+     * Look into pagination: https://www.baeldung.com/spring-data-jpa-query
      * 
      * Get a list of all words with the specified language.
+     * 
      * @param language The language you want words from.
      * @return A list of words from the language.
      */

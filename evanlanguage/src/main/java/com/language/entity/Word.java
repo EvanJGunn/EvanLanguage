@@ -44,7 +44,8 @@ public class Word {
     @JoinColumn(name = "sourceid")
     private WordSource wordSource;
 
-    public Word(String language, String meaning, String romanization, String type, Symbols symbols, WordSource wordSource) {
+    public Word(String language, String meaning, String romanization, String type, Symbols symbols,
+            WordSource wordSource) {
         this.language = language;
         this.meaning = meaning;
         this.romanization = romanization;
