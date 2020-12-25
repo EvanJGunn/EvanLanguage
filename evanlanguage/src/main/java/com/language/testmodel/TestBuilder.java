@@ -42,12 +42,12 @@ public class TestBuilder {
         switch (parameters.getTestType()) {
             case MEANING:
                 for (Word w: myWords) {
-                    myTest.addQuestion(new Question(MEANING_QUESTION + w.getRomanization(), w.getMeaning()));
+                    myTest.addQuestion(new Question(MEANING_QUESTION + w.getRomanization(), w.getMeaning(), w));
                 }
                 break;
             case MAIN_SYMBOLS:
                 for (Word w: myWords) {
-                    myTest.addQuestion(new Question(SYMBOLS_QUESTION + w.getSymbols().getMain(), w.getSymbols().getAncillary()));
+                    myTest.addQuestion(new Question(SYMBOLS_QUESTION + w.getSymbols().getMain(), w.getSymbols().getAncillary(), w));
                 }
                 break;
         }

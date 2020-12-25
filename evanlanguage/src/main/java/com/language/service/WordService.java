@@ -40,9 +40,4 @@ public interface WordService {
      * @return A list of all words in a language
      */
     public List<Word> getWordsByLanguage(String language);
-
-    /**
-     * A method for server side debugging
-     */
-    public void printAll();
 }

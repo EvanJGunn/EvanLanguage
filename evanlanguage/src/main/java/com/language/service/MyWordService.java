@@ -48,15 +48,4 @@ public class MyWordService implements WordService {
     public List<Word> getWordsByLanguage(String language) {
         return wordRepo.selectByLanguage(language);
     }
-
-    @Override
-    public void printAll() {
-        for (Word w : wordRepo.findAll()) {
-            System.out.println(w.getRomanization());
-            if (w.getSymbols() != null)
-                System.out.println(w.getSymbols().getMain());
-            if (w.getWordSource() != null)
-                System.out.println(w.getWordSource().getSource());
-        }
-    }
 }
