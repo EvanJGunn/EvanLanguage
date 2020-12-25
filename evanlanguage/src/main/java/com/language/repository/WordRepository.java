@@ -64,8 +64,8 @@ public interface WordRepository extends CrudRepository<Word, Long>, JpaSpecifica
                 
                 // Add predicates for the given parameters
                 if (source != null) {
-                    Path<WordSource> mySource = root.<WordSource>get("source");
-                    predicates.add(criteriaBuilder.and(criteriaBuilder.equal(mySource, source)));
+                    Path<WordSource> mySource = root.<WordSource>get("wordSource");
+                    predicates.add(criteriaBuilder.and(criteriaBuilder.equal(mySource.get("source"), source)));
                 }
                 if (wordType != null) {
                     predicates.add(criteriaBuilder.and(criteriaBuilder.equal(root.get("type"), wordType)));
