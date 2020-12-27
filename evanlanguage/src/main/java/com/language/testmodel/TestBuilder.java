@@ -36,7 +36,7 @@ public class TestBuilder {
      */
     public Test buildTest(TestParameters parameters) {
         // Get a list of words out of the repository based on parameters
-        List<Word> myWords = wordRepo.selectBySpecification(parameters.getSource(), parameters.getWordType(), parameters.getLanguage(), TEST_SIZE);
+        List<Word> myWords = wordRepo.selectBySpecification(parameters.getSource(), parameters.getWordType(), parameters.getLanguage(), parameters.getTestType(), TEST_SIZE);
         
         Test myTest = new Test();
         switch (parameters.getTestType()) {

@@ -17,8 +17,10 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import com.language.entity.Symbols;
 import com.language.entity.Word;
 import com.language.entity.WordSource;
+import com.language.testmodel.TestType;
 
 /**
  * CRUD access to the word table
@@ -50,7 +52,7 @@ public interface WordRepository extends CrudRepository<Word, Long>, JpaSpecifica
      * @param limit The number of words to return.
      * @return A randomized list, of size = limit, 
      */
-    public default List<Word> selectBySpecification(String source, String wordType, String language, int limit) {
+    public default List<Word> selectBySpecification(String source, String wordType, String language, TestType testType, int limit) {
         if (limit < 0) {
             System.out.println("LOGGING: WordRepository, SelectBySpecification, Limit parameter under 0");
         }
@@ -72,6 +74,19 @@ public interface WordRepository extends CrudRepository<Word, Long>, JpaSpecifica
                 }
                 if (language != null) {
                     predicates.add(criteriaBuilder.and(criteriaBuilder.equal(root.get("language"), language)));
+                }
+                
+                // Add predicates based on parameters
+                switch (testType) {
+                    case MAIN_SYMBOLS:
+                        // Check that there is an entry in the source table for both main and ancillary symbols,
+                        // which are necessary for a main_symbols test.
+                        Path<Symbols> mySymbols = root.<Symbols>get("symbols");
+                        predicates.add(criteriaBuilder.and(criteriaBuilder.isNotNull(mySymbols.get("main"))));
+                        predicates.add(criteriaBuilder.and(criteriaBuilder.isNotNull(mySymbols.get("ancillary"))));
+                        break;
+                    case MEANING:
+                        break;
                 }
                 
                 return criteriaBuilder.and(predicates.toArray(new Predicate[predicates.size()]));
