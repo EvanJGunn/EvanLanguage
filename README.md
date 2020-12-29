@@ -30,7 +30,7 @@ the name of an online dictionary. The source helps when generating tests, which
 will be covered later. I may later switch the relationship to many-to-one, allowing
 many words to be mapped to one source, so that unnecessary space is not taken up.
 
-# EvanLanguage (Spring Boot Web Server) <-------------------------------------- Stored in this repository
+# EvanLanguage (Spring Boot Web Server) Stored in this repository
 This webserver serves my website, as well as providing API endpoints
 for interaction with the database. A user may "/save" a new word, "/delete"
 an existing word, use "/words" to get a list of all words, use "/word{language}"
