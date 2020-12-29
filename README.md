@@ -5,7 +5,7 @@ Now using the MVC (Model, View, Controller) architecture as well.
 # What is the overall architecture?
 There are three parts to my spoken language testing system:
 1. The Database
-2. EvanLanguage (My Web Server) <------------ This repository store the code for this server
+2. EvanLanguage (My Web Server) <------------ This repository stores the code for this server
 3. EvanLanguageWeb (My react.js website) <---- Code in different repository
 
 # The Database
